@@ -16,20 +16,20 @@
 .topSearchbar {
     display: flex;
     justify-content: space-evenly;
-    padding: 0.5rem 0 2rem 0;
+    padding: 0.5rem 0 4rem 0;
     align-items: center;
 }
 
 .temperature {
-    font-size: 70px;
+    font-size: 100px;
     display: flex;
     justify-content: center;
-    margin: 5vw 0;
+    margin: 10vw 0;
 }
 
 .temperature::after {
     content: "°C";
-    font-size: 20px;
+    font-size: 30px;
 
 
 }
@@ -75,11 +75,14 @@
 
 #weatherIcon {
     width: auto;
-    height: 100px;
+    height: 250px;
+    margin-bottom: 5vw;
+
 }
 
 #description {
-    margin-top: 15px;
+    margin-top: 20px;
+    font-size: 28px;
 }
 
 .degree {
@@ -89,7 +92,7 @@
 .humiditylogo img,
 .windlogo img,
 .pressurelogo img {
-    height: 40px;
+    height: 50px;
     width: auto;
 }
 
@@ -102,7 +105,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
-    width: 60px;
+    height: 70px;
+    width: 70px;
 
 }
