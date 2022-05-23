@@ -122,7 +122,7 @@ window.addEventListener('load', () => {
                 }
                 else if (icon == "10d" || icon == "10n") {
                     if (timeDivider == "d") {
-                        Icon_img.src = "icons/rain/39.png";
+                        Icon_img.src = "icons/cloud/22.png";
                     }
                     else {
                         Icon_img.src = "icons/moon/21.png"
@@ -168,20 +168,136 @@ window.addEventListener('load', () => {
 
 const showWeather = () => {
     let input = document.querySelector(".text").value;
-    console.log(input)
+    // console.log(input)
     input ? (fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=b45cec15d4c670d6e31f5e37b4e47ad9`)
         .then(res => res.json())
         .then(data => {
 
             let country = data[0].country;
-            console.log(country);
+            // console.log(country);
             let lat = data[0].lat;
             let lon = data[0].lon;
+            let cityName = data[0].name;
+
+            document.getElementById("cityName").innerText = cityName;
+            document.getElementById("country").innerText = country;
             fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${appid}&units=metric`)
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    // console.log(data)
                     dayFinder(data.current.dt);
+
+
+                    let temperature = data.current.temp;
+                    let humidity = data.current.humidity;
+                    let pressure = data.current.pressure;
+                    let wind_speed = data.current.wind_speed;
+                    let description = data.current.weather[0].description;
+                    let icon = data.current.weather[0].icon;
+
+                    // showing data dynamically
+                    document.getElementById("description").innerText = description;
+                    document.getElementById("temperature").innerText = temperature;
+                    document.getElementById("humidity").innerText = humidity;
+                    document.getElementById("wind_speed").innerText = wind_speed;
+                    document.getElementById("pressure").innerText = pressure;
+                    let date = new Date()
+                    let hours = date.getHours();
+                    let timeDivider;
+                    if (hours < 19) {
+                        timeDivider = "d";
+                    }
+                    else {
+                        timeDivider = "n"
+                    }
+
+                    let Icon_img = document.getElementById("weatherIcon")
+                    if (icon == "01d" || icon == "01n") {
+
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/sun/26.png"
+
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/10.png"
+                        }
+                    }
+
+                    else if (icon == "02d" || icon == "02n") {
+
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/sun/27.png";
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/31.png"
+                        }
+
+                    }
+
+                    else if (icon == "03d" || icon == "03n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/35.png"
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/15.png"
+                        }
+
+                    }
+                    else if (icon == "04d" || icon == "04n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/35.png"
+
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/14.png"
+                        }
+
+                    }
+                    else if (icon == "09d" || icon == "09n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/7.png";
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/1.png"
+                        }
+
+                    }
+                    else if (icon == "10d" || icon == "10n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/22.png";
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/21.png"
+                        }
+
+                    }
+                    else if (icon == "11d" || icon == "11n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/12.png";
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/20.png"
+                        }
+
+                    }
+                    else if (icon == "13d" || icon == "13n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/23.png"
+                        }
+                        else {
+                            Icon_img.src = "icons/moon/40.png"
+                        }
+
+                    }
+                    else if (icon == "50d" || icon == "50n") {
+                        if (timeDivider == "d") {
+                            Icon_img.src = "icons/cloud/18.png"
+                        }
+                        else {
+                            Icon_img.src = "icons/cloud/2.2.png"
+                        }
+
+                    }
                 })
                 .catch(err => console.log(err))
 
