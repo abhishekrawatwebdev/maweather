@@ -5,6 +5,12 @@
     font-family: 'Comfortaa', cursive;
 }
 
+@media only screen and (max-width:1240px) {
+    .section {
+        height: 100vh;
+    }
+}
+
 #loader {
     height: 100px;
     width: 100%;
@@ -43,7 +49,7 @@
     color: white;
     background-color: #2a2a72;
     background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .topSearchbar {
