@@ -5,6 +5,39 @@
     font-family: 'Comfortaa', cursive;
 }
 
+#loader {
+    height: 100px;
+    width: 100%;
+    animation: loader_rotate infinite 3s alternate;
+}
+
+@keyframes loader_rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+#loader_sec {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.945);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    visibility: visible;
+    color: white;
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
 .section {
     /* background-color: #0B3954; */
     color: white;

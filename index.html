@@ -10,10 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>MaWeather-Get Weather details</title>
 </head>
 
 <body>
+    <div id="loader_sec">
+        <div class="loader">
+            <img src="icons/sun/26.png" alt="" id="loader">
+
+        </div>
+        <h2>Loading......</h2>
+    </div>
     <center>
         <div class="section">
             <div class="topSearchbar" style="">
@@ -26,11 +33,11 @@
             </div>
 
             <div style="display: flex; justify-content: center;">
-                <h1 class="cityName" id="city"><span id="cityName"></span>, <span id="country"></span></h1>
+                <h1 class="cityName" id="city"><span id="cityName"></span><span id="country"></span></h1>
             </div>
             <p id="description"></p>
             <h1 class="temperature" id="temperature"></h1>
-            <div><img id="weatherIcon" src="icons/cloud/12.png" alt="weather-Icon"></div>
+            <div><img id="weatherIcon" src="" alt="weather-Icon"></div>
 
 
             <br>
