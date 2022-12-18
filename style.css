@@ -49,7 +49,7 @@
     color: white;
     background-color: #2a2a72;
     background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
-    /* height: 100vh; */
+    height: 100vh;
 }
 
 .topSearchbar {
@@ -63,7 +63,13 @@
     font-size: 100px;
     display: flex;
     justify-content: center;
-    margin: 10vw 0;
+    margin: 5vw 0;
+}
+
+.temp-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .temperature::after {
@@ -114,8 +120,8 @@
 
 #weatherIcon {
     width: auto;
-    height: 250px;
-    margin-bottom: 5vw;
+    height: 145px;
+    padding-left: 15vw;
 
 }
 
@@ -146,5 +152,16 @@
     justify-content: center;
     height: 70px;
     width: 70px;
+
+}
+
+@media screen and (max-width:450px) {
+    .temp-wrapper {
+        flex-direction: column;
+    }
+
+    #weatherIcon {
+        padding-left: 0;
+    }
 
 }

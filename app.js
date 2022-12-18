@@ -1,8 +1,46 @@
-
-
 // starting with the details of current location
 let button = document.querySelector(".submit");
-let appid = "b45cec15d4c670d6e31f5e37b4e47ad9";
+let appidGeo = "b45cec15d4c670d6e31f5e37b4e47ad9";
+
+let inputCity = document.getElementById("city-name");
+let cityName = inputCity.value;
+let cities;
+const searchCity = (name) => {
+
+
+
+
+    fetch(
+        `https://parseapi.back4app.com/classes/Indiacities_india_cities_database?limit=5000&order=ascii_name`,
+        {
+            headers: {
+                'X-Parse-Application-Id': 'bkUzaIRvbyulThNsGymOIFYYozNxRFRCbBJ4wKlX', // This is your app's application id
+                'X-Parse-REST-API-Key': 'rlwN92eVr9JqoD3ICeAglFOCTmrWhHO424A58X0W', // This is your app's REST API key
+            }
+        })
+        .then(res => res.json())
+        // Here you have the data that you need
+        .then(data => {
+            return data.results;
+            // console.log(data.results)
+        })
+}
+
+const citiesList = async () => {
+    const result = await searchCity();
+    console.log(result);
+}
+
+
+
+
+inputCity.addEventListener('keyup', (event) => {
+
+
+
+
+})
+
 
 function Icon_setter(icon) {
     let date = new Date()
@@ -137,7 +175,7 @@ function myLocation() {
 
             let lon = pos.coords.longitude;
             let lat = pos.coords.latitude;
-            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${appid}`)
+            fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${appidGeo}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data) {
@@ -152,10 +190,9 @@ function myLocation() {
                     }
                 })
 
-            fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${appid}&units=metric`)
+            fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${appidGeo}&units=metric`)
                 .then(response => response.json())
                 .then(data => {
-
                     if (data) {
                         dayFinder(data.current.dt);
                         // console.log(data);
@@ -211,7 +248,7 @@ const showWeather = () => {
 
                 document.getElementById("cityName").innerText = cityName;
                 document.getElementById("country").innerText = ", " + country;
-                fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${appid}&units=metric`)
+                fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=minutely,hourly&appid=${appidGeo}&units=metric`)
                     .then(response => response.json())
                     .then(data => {
                         // console.log(data)
@@ -249,6 +286,7 @@ const showWeather = () => {
 }
 
 
+
 button.addEventListener('click', () => {
 
 
@@ -257,4 +295,5 @@ button.addEventListener('click', () => {
         document.getElementById("loader_sec").style.visibility = "hidden"
     }, 3000)
 })
+
 
