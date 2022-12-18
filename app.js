@@ -235,7 +235,7 @@ const showWeather = () => {
     document.getElementById("loader_sec").style.visibility = "visible"
     let input = document.querySelector(".text").value;
     // console.log(input)
-    if (input) {
+    if (input != "") {
         fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=b45cec15d4c670d6e31f5e37b4e47ad9`)
             .then(res => res.json())
             .then(data => {
@@ -278,7 +278,7 @@ const showWeather = () => {
     }
 
     else {
-        console.log("no data found");
+        alert('Please enter a city name')
     }
 
     document.querySelector(".text").value = ""
