@@ -225,17 +225,18 @@ function myLocation() {
 }
 window.addEventListener('load', () => {
     myLocation();
-
+    // document.getElementById("loader_sec").style.visibility = "hidden";
 
 });
 
 // showing weather on searching
 
 const showWeather = () => {
-    document.getElementById("loader_sec").style.visibility = "visible"
+    // 
     let input = document.querySelector(".text").value;
     // console.log(input)
     if (input != "") {
+        document.getElementById("loader_sec").style.visibility = "visible"
         fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=1&appid=b45cec15d4c670d6e31f5e37b4e47ad9`)
             .then(res => res.json())
             .then(data => {
@@ -269,6 +270,7 @@ const showWeather = () => {
                         document.getElementById("wind_speed").innerText = wind_speed;
                         document.getElementById("pressure").innerText = pressure;
                         Icon_setter(icon)
+                        document.getElementById("loader_sec").style.visibility = "hidden";
                     })
                     .catch(err => alert(err))
 
@@ -291,9 +293,14 @@ button.addEventListener('click', () => {
 
 
     showWeather()
-    setTimeout(() => {
-        document.getElementById("loader_sec").style.visibility = "hidden"
-    }, 3000)
+    // setTimeout(() => {
+    //     document.getElementById("loader_sec").style.visibility = "hidden"
+    // }, 3000)
 })
 
 
+window.addEventListener('keypress', (e) => {
+    if (e.key === "Enter") {
+        button.click();
+    }
+})
